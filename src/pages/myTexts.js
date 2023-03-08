@@ -41,7 +41,12 @@ const MyTexts = () => {
       <hr color='black'/>
       <AddText addText={addText}/>
       {myTexts?.map((textObject) => (
-        <MyText title={textObject.title} text={textObject.text} deleteText={deleteText} saveRedaction={saveRedaction}/>
+        <MyText 
+          title={textObject.title} 
+          text={textObject.text} 
+          deleteText={deleteText} 
+          saveRedaction={saveRedaction}
+        />
       ))}
     </div>
   );

@@ -235,6 +235,35 @@ header {
       font-size: 1.2rem;
       color: gray;
     }
+
+    .bottom-panel {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      padding: 10px;
+
+      button {
+        @include clear-button();
+        color: white;
+        font-size: 2.2rem;
+
+        &:hover {
+          color: orange;
+        }
+
+        &.disabled {
+          color: gray;
+          cursor: default;
+        }
+      }
+
+
+    }
   }
 }
 
@@ -354,7 +383,7 @@ header {
     height: 4rem;
     width: 100%;
     padding: 10px;
-    background: rgb(128, 172, 194);
+    background: rgb(117, 153, 172);
 
     .right {
       display: flex;
@@ -368,6 +397,29 @@ header {
     justify-content: center;
     padding: 10px;
     background-color: white;
+  }
+
+  .redacted-text {
+    padding: 10px;
+    background-color: white;
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    select {
+      margin-bottom: 10px;
+    }
+
+    input {
+      margin-bottom: 10px;
+    }
+
+    textarea {
+      height: 200px;
+      width: 300px;
+      margin-bottom: 10px;
+    }
   }
 }
 
@@ -398,5 +450,41 @@ header {
 
   .row:nth-child(2n) {
     background-color: rgb(169, 169, 169);
+  }
+}
+
+.my-words-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+
+  .word-container {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    color: orange;
+    font-size: 1.3rem;
+
+    .top {
+      display: flex;
+      
+      button {
+        @include clear-button();
+        margin-left: 10px;
+        margin-top: 0.1rem;
+        font-size: 1.3rem;
+        color: gray;
+  
+        &:hover {
+          color: orange;
+        }
+      }
+    }
+
+    .bottom {
+      font-size: 1rem;
+      color: black;
+    }
   }
 }

@@ -32,12 +32,16 @@ const NavigateMenu = () => {
             My Texts
           </button>
         </Link>
-        <button className="section">
-          Section #4
-        </button>
-        <button className="section">
-          Section #5
-        </button>
+        <Link href='/myWords'>
+          <button className="section">
+            My Words
+          </button>
+        </Link>
+        <Link href='/todayList'>
+          <button className="section">
+            Today List
+          </button>
+        </Link>
       </div>
       <button>
         <IoMdSettings className='icon-but' />

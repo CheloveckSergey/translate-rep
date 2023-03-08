@@ -2,23 +2,38 @@ import { URLSearchParams } from "next/dist/compiled/@edge-runtime/primitives/url
 
 export const translationService = {
   async translateText(text) {
-    const encodedParams = new URLSearchParams();
-    encodedParams.append("source_language", "en");
-    encodedParams.append("target_language", "ru");
-    encodedParams.append("text", text);
-
     const options = {
       method: 'POST',
       headers: {
-        'content-type': 'application/x-www-form-urlencoded',
+        'content-type': 'application/json',
         'X-RapidAPI-Key': 'cd2dfebd2cmsh0163ccffc61b51ep10bf7bjsnbe47d2776186',
-        'X-RapidAPI-Host': 'text-translator2.p.rapidapi.com'
+        'X-RapidAPI-Host': 'deep-translate1.p.rapidapi.com'
       },
-      body: encodedParams
+      body: `{"q":"${text}","source":"en","target":"ru"}`
     };
 
-    return fetch(
-      'https://text-translator2.p.rapidapi.com/translate', options
-    ).then(response => response.json());
+    const response = await fetch(
+      'https://deep-translate1.p.rapidapi.com/language/translate/v2', options
+    );
+    const json = await response.json();
+    return json.data.translations.translatedText;
+  },
+
+  async translateTextToLanguage(text, outputLanguage) {
+    const options = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'X-RapidAPI-Key': 'cd2dfebd2cmsh0163ccffc61b51ep10bf7bjsnbe47d2776186',
+        'X-RapidAPI-Host': 'deep-translate1.p.rapidapi.com'
+      },
+      body: `{"q":"${text}","source":"en","target":"${outputLanguage}"}`
+    };
+
+    const response = await fetch(
+      'https://deep-translate1.p.rapidapi.com/language/translate/v2', options
+    );
+    const json = await response.json();
+    return json.data.translations.translatedText;
   }
 }

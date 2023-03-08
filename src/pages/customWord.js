@@ -1,13 +1,25 @@
-import { getData } from '@/translateAPI/api';
+import { getData, translationService } from '@/translateAPI/api';
 import TranslatedWord from 'components/TranslatedWord';
 import React, { useRef, useState } from 'react';
+import { useQuery } from 'react-query';
 
 const CustomWord = () => {
   const [inputText, setInputText] = useState('');
+  const [text, setText] = useState('');
+
+  const {data, isLoading, error, refetch} = useQuery(
+    ['translateText', text],
+    () => translationService.translateText(text),
+    {
+      enabled: false,
+    }
+  );
 
   function handleChange(e) {
     setInputText(e.target.value);
   }
+
+  console.log(data);
 
   return (
     <div className='custom-text-container'>
@@ -20,11 +32,15 @@ const CustomWord = () => {
       /><br/>
       <button 
         className='translate-button'
-        onClick ={() => setShowTranslation(true)}
+        onClick ={() => {
+          setText(inputText);
+          setTimeout(() => {refetch()}, 0);
+        }}
       >
         Translate
       </button>
-      {showTranslation && <TranslatedWord text={inputRef.current.value} />}
+      {isLoading ? <p>Loading...</p> : 
+      data ? <p>{data}</p> : <p>Bad Data</p>}
     </div>
   );
 }

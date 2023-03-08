@@ -225,6 +225,32 @@ header {
   font-size: 1.2rem;
   color: gray;
 }
+.pop-up-window-container .pop-up-window .bottom-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+}
+.pop-up-window-container .pop-up-window .bottom-panel button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: white;
+  font-size: 2.2rem;
+}
+.pop-up-window-container .pop-up-window .bottom-panel button:hover {
+  color: orange;
+}
+.pop-up-window-container .pop-up-window .bottom-panel button.disabled {
+  color: gray;
+  cursor: default;
+}
 
 .splitted-text-container {
   display: flex;
@@ -330,7 +356,7 @@ header {
   height: 4rem;
   width: 100%;
   padding: 10px;
-  background: rgb(128, 172, 194);
+  background: rgb(117, 153, 172);
 }
 .my-text .header .right {
   display: flex;
@@ -342,6 +368,24 @@ header {
   justify-content: center;
   padding: 10px;
   background-color: white;
+}
+.my-text .redacted-text {
+  padding: 10px;
+  background-color: white;
+}
+.my-text .redacted-text p {
+  margin-bottom: 10px;
+}
+.my-text .redacted-text select {
+  margin-bottom: 10px;
+}
+.my-text .redacted-text input {
+  margin-bottom: 10px;
+}
+.my-text .redacted-text textarea {
+  height: 200px;
+  width: 300px;
+  margin-bottom: 10px;
 }
 
 .translation-table .row {
@@ -366,6 +410,40 @@ header {
 }
 .translation-table .row:nth-child(2n) {
   background-color: rgb(169, 169, 169);
+}
+
+.my-words-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+}
+.my-words-container .word-container {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  color: orange;
+  font-size: 1.3rem;
+}
+.my-words-container .word-container .top {
+  display: flex;
+}
+.my-words-container .word-container .top button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-top: 0.1rem;
+  font-size: 1.3rem;
+  color: gray;
+}
+.my-words-container .word-container .top button:hover {
+  color: orange;
+}
+.my-words-container .word-container .bottom {
+  font-size: 1rem;
+  color: black;
 }
 
 /*# sourceMappingURL=styles.css.map */
